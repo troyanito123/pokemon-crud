@@ -1,0 +1,81 @@
+<div class="form_container">
+  <p *ngIf="!isEditing"><strong>Nuevo Pokemon</strong></p>
+  <p *ngIf="isEditing"><strong>Edita el Pokemon</strong></p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input_container">
+      <div>
+        <div class="form_group">
+          <label for="">Nombre:</label>
+          <input
+            type="text"
+            class="input_form"
+            [class.error]="hasError('name')"
+            formControlName="name"
+            placeholder="Nombre"
+          />
+        </div>
+
+        <div class="form_group">
+          <label for="">Imagen:</label>
+          <input
+            type="text"
+            class="input_form"
+            [class.error]="hasError('image')"
+            formControlName="image"
+            placeholder="Url"
+            />
+          </div>
+          <span class="text_error" *ngIf="hasError('image')">{{errorMessage('image')}}</span>
+      </div>
+
+      <div>
+        <div class="form_group">
+          <label for="">Ataque:</label>
+          <div class="input_range_container">
+            <p>1</p>
+            <input
+              #range
+              class="input_range"
+              type="range"
+              min="0"
+              max="100"
+              formControlName="attack"
+            />
+            <p>100</p>
+          </div>
+        </div>
+
+        <div class="form_group">
+          <label for="">Defensa:</label>
+          <div class="input_range_container">
+            <p>1</p>
+            <input
+              #range
+              class="input_range"
+              type="range"
+              min="0"
+              max="100"
+              formControlName="defense"
+            />
+            <p>100</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions_container">
+      <button
+        type="submit"
+        class="btn-main"
+        [disabled]="form.invalid || (uiService.isLoading$ | async)"
+      >
+        <span class="material-symbols-outlined"> save </span>
+        Guardar
+      </button>
+      <button type="button" class="btn-main" (click)="cancel()">
+        <span class="material-symbols-outlined"> close </span>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

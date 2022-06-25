@@ -1,0 +1,30 @@
+.input_range_container {
+  display: flex;
+  align-items: center;
+  width: 210px;
+  height: 50px;
+  gap: 1rem;
+}
+
+.form_container {
+  margin-top: 2rem;
+  border: 2px solid var(--border);
+  padding: 1rem 0.5rem 0.5rem 5rem;
+  background-color: white;
+  p {
+    text-align: center;
+    color: var(--title);
+  }
+
+  .input_container {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+  }
+
+  .actions_container {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+}
